@@ -93,7 +93,7 @@ it('lets 2 users exchange stars', async() => {
     await instance.createStar('first star', starId1, {from: user1});
     let user2 = accounts[2];
     let starId2 = 10;
-    await instance.createStar('second star', starId, {from: user2});
+    await instance.createStar('second star', starId2, {from: user2});
     await instance.exchangeStars(starId1,starId2,{from:user1});
     assert.equal(await instance.ownerOf(starId2),user1);
     assert.equal(await instance.ownerOf(starId1),user2);
@@ -108,7 +108,7 @@ it('lets a user transfer a star', async() => {
     let starId = 11;
     await instance.createStar('cool star', starId, {from: user1});
     let user2 = accounts[2];
-    await instance.transferStar(user2,starId1, {from: user1});
+    await instance.transferStar(user2,starId, {from: user1});
     assert.equal(await instance.ownerOf(starId),user2);
     // 1. create a Star with different tokenId
     // 2. use the transferStar function implemented in the Smart Contract
@@ -120,7 +120,7 @@ it('lookUptokenIdToStarInfo test', async() => {
     let user1 = accounts[1];
     let starId1 = 12;
     await instance.createStar('bigg star', starId1, {from: user1});
-    assert.equal(await instance.lookUptokenIdToStarInfo(starId),"bigg star");
+    assert.equal(await instance.lookUptokenIdToStarInfo(starId1),"bigg star");
     // 1. create a Star with different tokenId
     // 2. Call your method lookUptokenIdToStarInfo
     // 3. Verify if you Star name is the same
